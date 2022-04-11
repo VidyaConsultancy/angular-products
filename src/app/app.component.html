@@ -1,18 +1,33 @@
-<div
-  class="product"
-  *ngFor="
-    let product of products;
-    index as i;
-    first as first;
-    last as last;
-    odd as odd;
-    even as even
-  "
->
-  <h2 class="product__title" #productTitle>
-    {{ i + 1 }}. {{ first }} {{ last }} {{ odd }} {{ even }} {{ product.title }}
-  </h2>
-  <span class="product__price">{{ product.price }}</span>
+<div class="container">
+  <div class="products">
+    <h2 class="title">Products</h2>
+    <div
+      class="product"
+      *ngFor="
+        let product of products;
+        index as i;
+        first as isFirst;
+        last as isLast;
+        odd as isOdd;
+        even as isEven
+      "
+      [ngClass]="{'product--odd':isOdd, 'product--even': isEven}"
+    >
+      <h4 class="product__title" #productTitle [ngStyle]="{'border-bottom': borderBottom}" [attr.aria-label]="product.title">
+        {{ product.title }}
+      </h4>
+      <h3 class="product__price" [ngClass]="'price price1'">{{ product.price }}</h3>
+    </div>
+    <p *ngIf="products.length > 20; else lessProducts">greater than 20 products</p>
+    <ng-template #lessProducts><p>less than 20 products</p></ng-template>
+  </div>
+  
+  <div class="terminal" [ngSwitch]="selection">
+    <pre *ngSwitchDefault>ng generate component xyz</pre>
+    <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
+    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
+    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
+    <pre *ngSwitchCase="'test'">ng test</pre>
+    <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  </div>
 </div>
-<p *ngIf="products.length > 20; else lessProducts">greater than 20 products</p>
-<ng-template #lessProducts><p>less than 20 products</p></ng-template>

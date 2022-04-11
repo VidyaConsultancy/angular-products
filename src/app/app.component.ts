@@ -216,4 +216,6 @@ export class AppComponent {
       rating: { rate: 3.6, count: 145 },
     },
   ];
+  selection = 'afadf';
+  borderBottom = '1px solid rgba(0,0,0,0.2)';
 }
