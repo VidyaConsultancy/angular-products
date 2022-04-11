@@ -1,1 +1,12 @@
-<p>products works!</p>
+<div class="products container">
+  <h2 class="title" [title]="'Products list'">Products</h2>
+  <p *ngIf="products.length === 0; else lessProducts">No record found</p>
+  <ng-template #lessProducts>
+    <app-product
+      *ngFor="let product of products; odd as isOdd; even as isEven"
+      [ngClass]="{ 'product--odd': isOdd, 'product--even': isEven }"
+      [product]="product"
+      (delete)="handleProductDelete($event)"
+    ></app-product>
+  </ng-template>
+</div>

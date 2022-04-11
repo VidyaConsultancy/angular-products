@@ -1,30 +1,4 @@
 <div class="container">
-  <div class="products">
-    <h2 class="title">Products</h2>
-    <div
-      class="product"
-      *ngFor="
-        let product of products;
-        index as i;
-        first as isFirst;
-        last as isLast;
-        odd as isOdd;
-        even as isEven
-      "
-      [ngClass]="{'product--odd':isOdd, 'product--even': isEven}"
-    >
-      <h4 class="product__title" #productTitle [ngStyle]="{'border-bottom': borderBottom}" [attr.aria-label]="product.title">
-        {{ product.title | titlecase }}
-      </h4>
-      <h3 class="product__price" [ngClass]="'price price1'">
-        {{ product.price | currency:'INR':'symbol':'0.2-2' }}
-      </h3>
-      <span>{{now | date:"dd/MM/yyyy"}}</span>
-    </div>
-    <p *ngIf="products.length > 20; else lessProducts">greater than 20 products</p>
-    <ng-template #lessProducts><p>less than 20 products</p></ng-template>
-  </div>
-  
   <div class="terminal" [ngSwitch]="selection">
     <pre *ngSwitchDefault>ng generate component xyz</pre>
     <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
@@ -34,3 +8,4 @@
     <pre *ngSwitchCase="'build'">ng build --prod</pre>
   </div>
 </div>
+<app-products></app-products>

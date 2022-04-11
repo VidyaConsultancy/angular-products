@@ -1,0 +1,9 @@
+<div class="product">
+  <h4 class="product__title" [attr.aria-label]="product.title">
+    {{ product.title | titlecase }}
+  </h4>
+  <h3 class="product__price">
+    {{ product.price | currency: "INR":"symbol":"0.2-2" }}
+  </h3>
+  <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+</div>
