@@ -8,6 +8,7 @@ import { TProduct } from './products/types/product.type';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  now = new Date();
   products: TProduct[] = [
     {
       id: 1,

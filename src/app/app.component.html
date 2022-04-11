@@ -14,9 +14,12 @@
       [ngClass]="{'product--odd':isOdd, 'product--even': isEven}"
     >
       <h4 class="product__title" #productTitle [ngStyle]="{'border-bottom': borderBottom}" [attr.aria-label]="product.title">
-        {{ product.title }}
+        {{ product.title | titlecase }}
       </h4>
-      <h3 class="product__price" [ngClass]="'price price1'">{{ product.price }}</h3>
+      <h3 class="product__price" [ngClass]="'price price1'">
+        {{ product.price | currency:'INR':'symbol':'0.2-2' }}
+      </h3>
+      <span>{{now | date:"dd/MM/yyyy"}}</span>
     </div>
     <p *ngIf="products.length > 20; else lessProducts">greater than 20 products</p>
     <ng-template #lessProducts><p>less than 20 products</p></ng-template>
