@@ -1,22 +1,17 @@
 .products {
+    padding: 3em 1rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1em 1em;
+    background-color: hsl(var(--clr-accent));
 }
 .title {
     grid-column: 1 /  -1;
     text-align: center;
 }
 .product {
-    background-color: #caf3c9;
-    padding: 1em 1em;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: hsl(var(--clr-accent));
+    background-color: hsl(var(--clr-dark));
     line-height: 1;
-    color: #caf3c9
-}
-.product--even {
-    color: #391b3f;
-}
-.product--odd {
-    color: #d52913;
+    max-height: 500px;
 }

@@ -1,9 +1,19 @@
 <div class="product">
-  <h4 class="product__title" [attr.aria-label]="product.title">
-    {{ product.title | titlecase }}
-  </h4>
-  <h3 class="product__price">
-    {{ product.price | currency: "INR":"symbol":"0.2-2" }}
-  </h3>
-  <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+  <header class="product__head">
+    <picture class="product__image">
+      <source media="(min-width: 800px)" [srcset]="product.image">
+      <img [src]="product.image" [alt]="product.title">
+    </picture>
+  </header>
+  <main class="product__body">
+    <h4 class="product__title" [attr.aria-label]="product.title" [title]="product.title">
+      {{ product.title | titlecase }}
+    </h4>
+    <h3 class="product__price">
+      <strong>{{ product.price | currency: "INR":"symbol":"0.2-2" }}</strong>
+    </h3>
+  </main>
+  <footer class="product__action">
+    <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+  </footer>
 </div>

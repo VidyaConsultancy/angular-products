@@ -1,0 +1,22 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.product__head {
+  flex: 0 1 60%;
+  max-height: 60%;
+}
+.product__body,
+.product__action {
+  padding: 1em 1em;
+}
+.product__image {
+  max-height: 60%;
+}
+.product__image > img {
+  object-fit: cover;
+  max-height: 100%;
+  width: 100%;
+}
