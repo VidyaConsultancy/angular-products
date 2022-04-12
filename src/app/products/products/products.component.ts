@@ -223,6 +223,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {}
 
   handleProductDelete(id: number) {
+    console.log(id);
     this.products = this.products.filter((product) => product.id !== id);
+  }
+
+  handleMouseOver(event) {
+    console.log(event)
   }
 }

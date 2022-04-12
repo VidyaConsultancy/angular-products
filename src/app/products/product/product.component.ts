@@ -7,15 +7,14 @@ import { TProduct } from '../types/product.type';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @Input('product') product: TProduct;
-  @Output('delete') productDelete: EventEmitter<number> = new EventEmitter();
+  @Input() public product: TProduct;
+  @Output() public productDelete: EventEmitter<number> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   handleDelete() {
-    console.log(this.product.id);
     this.productDelete.emit(this.product.id);
   }
 }
