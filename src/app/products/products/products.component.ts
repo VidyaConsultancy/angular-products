@@ -112,13 +112,35 @@ export class ProductsComponent implements OnInit {
       rating: { rate: 2.1, count: 430 },
     },
   ];
+  title: string;
+  price: number;
+  description: string;
+  category: string;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   handleProductDelete(id: number) {
-    console.log(id);
     this.products = this.products.filter((product) => product.id !== id);
+  }
+
+  handleSubmit(event: MouseEvent) {
+    event.preventDefault();
+    this.products.push({
+      id: this.generateARandomId(),
+      title: this.title,
+      price: this.price,
+      description: this.description,
+      category: this.category,
+      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      rating: { rate: 0, count: 0 },
+    });
+  }
+
+  generateARandomId(min: number = 1000, max: number = 9999) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
