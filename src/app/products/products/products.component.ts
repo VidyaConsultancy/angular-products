@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 import { TProduct } from '../types/product.type';
 
@@ -112,13 +113,23 @@ export class ProductsComponent implements OnInit {
       rating: { rate: 2.1, count: 430 },
     },
   ];
-  title: string;
+  title: FormControl;
   price: number;
   description: string;
   category: string;
   titleErrors: string;
 
-  constructor() {}
+  constructor() {
+    this.title = new FormControl('', Validators.required);
+    // console.log(this.title);
+    this.title.valueChanges.subscribe(value => {
+      if (value.trim().length === 0) {
+        this.titleErrors = 'Title is required';
+      } else {
+        this.titleErrors = null;
+      }
+    })
+  }
 
   ngOnInit(): void {}
 
@@ -128,13 +139,13 @@ export class ProductsComponent implements OnInit {
 
   handleSubmit(event: MouseEvent) {
     event.preventDefault();
-    if (!this.title || (this.title && this.title.trim().length === 0)) {
+    if (this.title.invalid) {
       console.log('Invalid title value');
       return;
     }
     this.products.unshift({
       id: this.generateARandomId(),
-      title: this.title,
+      title: this.title.value,
       price: this.price,
       description: this.description,
       category: this.category,
@@ -147,14 +158,5 @@ export class ProductsComponent implements OnInit {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  handleKeydown(event: any) {
-    const value = event.target.value.trim() ;
-    if(value.length === 0) {
-      this.titleErrors = 'Title is required'
-    } else {
-      this.titleErrors = null;
-    }
   }
 }

@@ -11,10 +11,9 @@
             name="title"
             placeholder="Product title here"
             id="title"
-            [(ngModel)]="title"
-            (keyup)="handleKeydown($event)"
+            [formControl]="title"
           />
-          <small *ngIf="titleErrors" class="input-error">{{ titleErrors }}</small>
+          <small *ngIf="title.invalid && title.dirty" class="input-error">Title is required</small>
         </div>
         <div class="input-group">
           <label for="price" class="input-label">Product price</label>
