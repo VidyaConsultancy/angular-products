@@ -78,3 +78,8 @@ img {
     font-size: 0.875rem;
     resize: none;
 }
+.input-error {
+    font-size: 0.75rem;
+    margin-top: 0.5em;
+    color: hsl(var(--clr-danger));
+}

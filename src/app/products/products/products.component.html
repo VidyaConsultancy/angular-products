@@ -12,7 +12,9 @@
             placeholder="Product title here"
             id="title"
             [(ngModel)]="title"
+            (keyup)="handleKeydown($event)"
           />
+          <small *ngIf="titleErrors" class="input-error">{{ titleErrors }}</small>
         </div>
         <div class="input-group">
           <label for="price" class="input-label">Product price</label>
@@ -42,8 +44,15 @@
         </div>
         <div class="input-group">
           <label for="category" class="input-label">Product category</label>
-          <select class="input-control" name="category" id="category" [(ngModel)]="category">
-            <option value="undefined" disabled selected>Select a category</option>
+          <select
+            class="input-control"
+            name="category"
+            id="category"
+            [(ngModel)]="category"
+          >
+            <option value="undefined" disabled selected>
+              Select a category
+            </option>
             <option value="electronics">Electronics</option>
             <option value="jewelery">Jewelery</option>
             <option value="men's clothing">Men's clothing</option>
