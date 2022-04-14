@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { TProduct } from '../types/product.type';
 
@@ -113,22 +113,29 @@ export class ProductsComponent implements OnInit {
       rating: { rate: 2.1, count: 430 },
     },
   ];
-  title: FormControl;
-  price: number;
-  description: string;
-  category: string;
-  titleErrors: string;
+  productForm: FormGroup;
 
   constructor() {
-    this.title = new FormControl('', Validators.required);
-    // console.log(this.title);
-    this.title.valueChanges.subscribe(value => {
-      if (value.trim().length === 0) {
-        this.titleErrors = 'Title is required';
-      } else {
-        this.titleErrors = null;
-      }
-    })
+    this.productForm = new FormGroup({
+      id: new FormControl(this.generateARandomId(), Validators.required),
+      title: new FormControl('', Validators.required),
+      price: new FormControl(null, [
+        Validators.required,
+        Validators.min(10),
+        Validators.max(999),
+      ]),
+      description: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
+      image: new FormControl(
+        'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+      , Validators.required),
+      rating: new FormGroup({
+        rate: new FormControl(0),
+        count: new FormControl(0),
+      })
+    });
+    console.log(this.productForm);
+    this.productForm.get('title').valueChanges.subscribe(value => {})
   }
 
   ngOnInit(): void {}
@@ -139,18 +146,12 @@ export class ProductsComponent implements OnInit {
 
   handleSubmit(event: MouseEvent) {
     event.preventDefault();
-    if (this.title.invalid) {
+    if (this.productForm.invalid) {
       console.log('Invalid title value');
       return;
     }
     this.products.unshift({
-      id: this.generateARandomId(),
-      title: this.title.value,
-      price: this.price,
-      description: this.description,
-      category: this.category,
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      rating: { rate: 0, count: 0 },
+      ...this.productForm.value
     });
   }
 

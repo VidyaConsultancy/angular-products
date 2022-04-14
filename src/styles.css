@@ -83,3 +83,9 @@ img {
     margin-top: 0.5em;
     color: hsl(var(--clr-danger));
 }
+.btn[disabled] {
+    cursor: not-allowed;
+    background-color: hsla(var(--clr-light), 0.75);
+    color: hsl(var(--clr-dark));
+    user-select: none;
+}

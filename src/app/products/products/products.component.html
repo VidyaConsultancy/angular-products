@@ -1,6 +1,6 @@
 <div class="container">
   <div class="product-add">
-    <form class="product-add-form" (ngSubmit)="handleSubmit($event)">
+    <form class="product-add-form" (ngSubmit)="handleSubmit($event)" [formGroup]="productForm">
       <fieldset class="fieldset">
         <legend class="legend">Enter new product details</legend>
         <div class="input-group">
@@ -11,9 +11,9 @@
             name="title"
             placeholder="Product title here"
             id="title"
-            [formControl]="title"
+            formControlName="title"
           />
-          <small *ngIf="title.invalid && title.dirty" class="input-error">Title is required</small>
+          <small *ngIf="productForm.get('title').invalid && productForm.get('title').dirty" class="input-error">Title is required</small>
         </div>
         <div class="input-group">
           <label for="price" class="input-label">Product price</label>
@@ -25,7 +25,7 @@
             name="price"
             placeholder="Product price here"
             id="price"
-            [(ngModel)]="price"
+            formControlName="price"
           />
         </div>
         <div class="input-group">
@@ -38,7 +38,7 @@
             placeholder="Product description here"
             id="description"
             rows="3"
-            [(ngModel)]="description"
+            formControlName="description"
           ></textarea>
         </div>
         <div class="input-group">
@@ -47,9 +47,9 @@
             class="input-control"
             name="category"
             id="category"
-            [(ngModel)]="category"
+            formControlName="category"
           >
-            <option value="undefined" disabled selected>
+            <option value="" disabled selected>
               Select a category
             </option>
             <option value="electronics">Electronics</option>
@@ -59,7 +59,7 @@
           </select>
         </div>
         <div class="input-group align-center">
-          <button type="submit" class="btn btn-danger">Submit</button>
+          <button type="submit" class="btn btn-danger" [disabled]="productForm.invalid">Submit</button>
         </div>
       </fieldset>
     </form>
