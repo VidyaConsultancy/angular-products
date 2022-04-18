@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl,
   Validators,
   FormGroup,
   FormBuilder,
 } from '@angular/forms';
 
 import { TProduct } from '../types/product.type';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-products',
@@ -120,11 +120,18 @@ export class ProductsComponent implements OnInit {
   ];
   productForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private appService: AppService) {
     this.createProductForm();
+    const sum = this.appService.add(10, 20);
+    const diff = this.appService.substract(10, 20);
+    console.log(sum, diff, this.appService.operations);
   }
 
   ngOnInit(): void {}
+
+  getOps() {
+    console.log(this.appService.operations);
+  }
 
   createProductForm() {
     this.productForm = this.fb.group({
