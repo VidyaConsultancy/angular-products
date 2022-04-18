@@ -9,6 +9,7 @@ import { TProduct } from '../types/product.type';
 export class ProductComponent implements OnInit {
   @Input() public product: TProduct;
   @Output() public productDelete: EventEmitter<number> = new EventEmitter();
+  @Output() public productAdd: EventEmitter<TProduct> = new EventEmitter();
 
   constructor() {}
 
@@ -16,5 +17,9 @@ export class ProductComponent implements OnInit {
 
   handleDelete() {
     this.productDelete.emit(this.product.id);
+  }
+
+  handleAdd() {
+    this.productAdd.emit(this.product);
   }
 }

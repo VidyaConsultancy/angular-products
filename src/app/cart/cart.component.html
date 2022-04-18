@@ -1,1 +1,9 @@
-<p>cart works!</p>
+<div class="cart">
+    <button class="btn btn-primary" (click)="getCartItems()">Show Cart</button>
+    
+    <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of cartItems">
+            <h3>{{item.title}} | <small>{{item.price}}</small></h3>
+        </div>
+    </div>
+</div>

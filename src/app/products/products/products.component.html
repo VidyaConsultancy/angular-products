@@ -1,6 +1,5 @@
 <div class="container">
-  <button (click)="getOps()">Get Ops</button>
-  <div class="product-add">
+  <div class="product-add" hidden>
     <form class="product-add-form" (ngSubmit)="handleSubmit($event)" [formGroup]="productForm">
       <fieldset class="fieldset">
         <legend class="legend">Enter new product details</legend>
@@ -75,6 +74,7 @@
         [ngClass]="{ 'product--odd': isOdd, 'product--even': isEven }"
         [product]="product"
         (productDelete)="handleProductDelete($event)"
+        (productAdd)="handleProductAdd($event)"
       ></app-product>
     </ng-template>
   </div>

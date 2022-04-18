@@ -7,6 +7,7 @@ import {
 
 import { TProduct } from '../types/product.type';
 import { AppService } from 'src/app/app.service';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -120,7 +121,7 @@ export class ProductsComponent implements OnInit {
   ];
   productForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private appService: AppService) {
+  constructor(private fb: FormBuilder, private appService: AppService, private cartService: CartService) {
     this.createProductForm();
     const sum = this.appService.add(10, 20);
     const diff = this.appService.substract(10, 20);
@@ -131,6 +132,10 @@ export class ProductsComponent implements OnInit {
 
   getOps() {
     console.log(this.appService.operations);
+  }
+
+  handleProductAdd(product: TProduct) {
+    this.cartService.addItem(product);
   }
 
   createProductForm() {
