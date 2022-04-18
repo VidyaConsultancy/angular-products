@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  FormBuilder,
+} from '@angular/forms';
 
 import { TProduct } from '../types/product.type';
 
@@ -115,30 +120,34 @@ export class ProductsComponent implements OnInit {
   ];
   productForm: FormGroup;
 
-  constructor() {
-    this.productForm = new FormGroup({
-      id: new FormControl(this.generateARandomId(), Validators.required),
-      title: new FormControl('', Validators.required),
-      price: new FormControl(null, [
-        Validators.required,
-        Validators.min(10),
-        Validators.max(999),
-      ]),
-      description: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
-      image: new FormControl(
-        'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-      , Validators.required),
-      rating: new FormGroup({
-        rate: new FormControl(0),
-        count: new FormControl(0),
-      })
-    });
-    console.log(this.productForm);
-    this.productForm.get('title').valueChanges.subscribe(value => {})
+  constructor(private fb: FormBuilder) {
+    this.createProductForm();
   }
 
   ngOnInit(): void {}
+
+  createProductForm() {
+    this.productForm = this.fb.group({
+      id: [this.generateARandomId(), Validators.required],
+      title: ['', Validators.required],
+      price: [
+        null,
+        [Validators.required, Validators.min(10), Validators.max(999)],
+      ],
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      image: [
+        'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+        Validators.required,
+      ],
+      rating: this.fb.group({
+        rate: [0],
+        count: [0],
+      }),
+    });
+    console.log(this.productForm);
+    this.productForm.get('title').valueChanges.subscribe((value) => {});
+  }
 
   handleProductDelete(id: number) {
     this.products = this.products.filter((product) => product.id !== id);
@@ -151,7 +160,7 @@ export class ProductsComponent implements OnInit {
       return;
     }
     this.products.unshift({
-      ...this.productForm.value
+      ...this.productForm.value,
     });
   }
 
