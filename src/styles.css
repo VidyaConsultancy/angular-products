@@ -47,12 +47,19 @@ img {
 }
 .btn-danger {
     background-color: hsl(var(--clr-danger));
-    color: #fefefe;
+    color: hsl(var(--clr-light));
 }
 .btn-danger:hover, .btn-danger:focus {
     background-color: hsla(var(--clr-danger), 0.75);
 }
-
+.btn-primary {
+    background-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-light));
+}
+.btn-accent {
+    background-color: hsl(var(--clr-accent));
+    color: hsl(var(--clr-dark));
+}
 /* Form */
 .fieldset {
     padding: 1.5em 2em;
