@@ -222,3 +222,12 @@
 - Use post component to create the individual post item.
 - Create a delete button in post component that will delete the underlying post.
 - Use Input and Output decorator to pass data.
+
+### PART III
+**Service Task**
+1. Create a service PostService.
+2. Add a like button to a post.
+3. In PostService, maintain a list of liked posts.
+    a. Add a method to add a post to liked list.
+    b. Add a method to return the liked post list. (Ensure to return a copy of it not the reference)
+4. Create a new component LikedPosts. Render liked post list in this component. Use a button to fetch liked post list.
