@@ -1,0 +1,18 @@
+.menubar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 2rem;
+    background-color: hsl(var(--clr-accent));
+    padding: 0.75rem 1rem;
+}
+.menubar > li {
+    list-style-type: none;
+}
+.menubar > li > a {
+    display: inline-flex;
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+    background-color: hsl(var(--clr-dark));
+    color: hsl(var(--clr-accent));
+}

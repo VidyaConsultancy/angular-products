@@ -24,3 +24,14 @@ https://v10.angular.io/api/common/NgIf
 - TitalcasePipe
 - AsyncPipe
 - JSONPipe
+
+### Service ProvidedIn value
+Eagerly Loaded Modules
+AppModule - instanceO
+UserModule - instanceO
+AuthModule - instanceO
+
+Lazily Loaded Modules
+ProductsModule - instanceA
+CartModule - instanceB
+CheckoutModule - instanceC
