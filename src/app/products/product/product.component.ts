@@ -9,6 +9,7 @@ import { TProduct } from '../types/product.type';
 })
 export class ProductComponent implements OnInit {
   @Input() public product: TProduct;
+  @Input() public isDetailView: boolean;
   @Output() public productDelete: EventEmitter<number> = new EventEmitter();
   @Output() public productAdd: EventEmitter<TProduct> = new EventEmitter();
 

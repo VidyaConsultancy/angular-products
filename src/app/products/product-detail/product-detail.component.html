@@ -1,4 +1,6 @@
 <app-product
   class="product"
   [product]="product"
+  [isDetailView]="true"
+  (productAdd)="handleProductAdd($event)"
 ></app-product>

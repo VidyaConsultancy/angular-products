@@ -13,7 +13,9 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartItems = this.cartService.getItems();
+  }
 
   getCartItems() {
     this.cartItems = this.cartService.getItems();

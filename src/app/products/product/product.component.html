@@ -15,7 +15,9 @@
   </main>
   <footer class="product__action">
     <button class="btn btn-accent" (click)="handleAdd()">Add to Cart</button>
-    <button class="btn btn-primary" (click)="showDetails()">Show</button>
-    <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+    <ng-container *ngIf="!isDetailView">
+      <button class="btn btn-primary" (click)="showDetails()">Show</button>
+      <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+    </ng-container>
   </footer>
 </div>
