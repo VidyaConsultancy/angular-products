@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { TProduct } from '../types/product.type';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductComponent implements OnInit {
   @Output() public productDelete: EventEmitter<number> = new EventEmitter();
   @Output() public productAdd: EventEmitter<TProduct> = new EventEmitter();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -21,5 +22,9 @@ export class ProductComponent implements OnInit {
 
   handleAdd() {
     this.productAdd.emit(this.product);
+  }
+
+  showDetails() {
+    this.router.navigateByUrl(`/products/${this.product.id}`, {})
   }
 }

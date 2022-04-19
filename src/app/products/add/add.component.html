@@ -1,0 +1,77 @@
+<div class="product-add">
+  <form
+    class="product-add-form"
+    (ngSubmit)="handleSubmit($event)"
+    [formGroup]="productForm"
+  >
+    <fieldset class="fieldset">
+      <legend class="legend">Enter new product details</legend>
+      <div class="input-group">
+        <label for="title" class="input-label">Product title</label>
+        <input
+          type="text"
+          class="input-control"
+          name="title"
+          placeholder="Product title here"
+          id="title"
+          formControlName="title"
+        />
+        <small
+          *ngIf="
+            productForm.get('title').invalid && productForm.get('title').dirty
+          "
+          class="input-error"
+          >Title is required</small
+        >
+      </div>
+      <div class="input-group">
+        <label for="price" class="input-label">Product price</label>
+        <input
+          type="number"
+          min="1"
+          max="999"
+          class="input-control"
+          name="price"
+          placeholder="Product price here"
+          id="price"
+          formControlName="price"
+        />
+      </div>
+      <div class="input-group">
+        <label for="description" class="input-label">Product description</label>
+        <textarea
+          class="input-control"
+          name="description"
+          placeholder="Product description here"
+          id="description"
+          rows="3"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="input-group">
+        <label for="category" class="input-label">Product category</label>
+        <select
+          class="input-control"
+          name="category"
+          id="category"
+          formControlName="category"
+        >
+          <option value="" disabled selected>Select a category</option>
+          <option value="electronics">Electronics</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="men's clothing">Men's clothing</option>
+          <option value="women's clothing">Women's clothing</option>
+        </select>
+      </div>
+      <div class="input-group align-center">
+        <button
+          type="submit"
+          class="btn btn-danger"
+          [disabled]="productForm.invalid"
+        >
+          Submit
+        </button>
+      </div>
+    </fieldset>
+  </form>
+</div>

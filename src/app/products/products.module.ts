@@ -5,11 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
+import { AddComponent } from './add/add.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [];
 
 @NgModule({
-  declarations: [ProductsComponent, ProductComponent],
+  declarations: [ProductsComponent, ProductComponent, AddComponent, ProductDetailComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(routes)],
   exports: [ProductsComponent]
 })
