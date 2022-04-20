@@ -39,3 +39,9 @@ CheckoutModule - instanceC
 ### Generate a module with routing
     This command will generate a auth module, auth routing module, and auth component. And register it in app routing module with auth as a route path.
 `ng g m auth --routing --routing-scope=Child --route=auth --module=app`
+
+### CRUD
+C => Create => POST
+R => Read => GET
+U => Update => PUT/PATCH
+D => Delete => DELETE

@@ -44,6 +44,9 @@ img {
     text-align: center;
     transition: all ease 350ms;
     cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn-danger {
     background-color: hsl(var(--clr-danger));

@@ -30,4 +30,8 @@ export class ProductService {
   public getProductDetailById(id: number): Observable<TProduct> {
     return this.http.get<TProduct>(`${this.baseUrl}/products/${id}`);
   }
+
+  public editProduct(id: number, data: TProduct): Observable<TProduct> {
+    return this.http.put<TProduct>(`${this.baseUrl}/products/${id}`, data);
+  }
 }

@@ -14,10 +14,11 @@
     </h3>
   </main>
   <footer class="product__action">
-    <button class="btn btn-accent" (click)="handleAdd()">Add to Cart</button>
+    <button class="btn btn-accent" (click)="handleAdd()"><fa-icon [icon]="faCartPlus"></fa-icon></button>
     <ng-container *ngIf="!isDetailView">
-      <button class="btn btn-primary" (click)="showDetails()">Show</button>
-      <button class="btn btn-danger" (click)="handleDelete()">Delete</button>
+      <a class="btn btn-danger" [routerLink]="['edit', product.id]"><fa-icon [icon]="faEdit"></fa-icon></a>
+      <button class="btn btn-primary" (click)="showDetails()"><fa-icon [icon]="faEye"></fa-icon></button>
+      <button class="btn btn-danger" (click)="handleDelete()"><fa-icon [icon]="faTrash"></fa-icon></button>
     </ng-container>
   </footer>
 </div>
