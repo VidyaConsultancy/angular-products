@@ -1,6 +1,9 @@
-<app-product
-  class="product"
-  [product]="product"
-  [isDetailView]="true"
-  (productAdd)="handleProductAdd($event)"
-></app-product>
+<div class="container">
+  <app-product
+    *ngIf="product"
+    class="product"
+    [product]="product"
+    [isDetailView]="true"
+    (productAdd)="handleProductAdd($event)"
+  ></app-product>
+</div>

@@ -18,7 +18,6 @@ export class AddComponent implements OnInit {
 
   createProductForm() {
     this.productForm = this.fb.group({
-      id: [this.generateARandomId(), Validators.required],
       title: ['', Validators.required],
       price: [
         null,
@@ -29,13 +28,8 @@ export class AddComponent implements OnInit {
       image: [
         'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
         Validators.required,
-      ],
-      rating: this.fb.group({
-        rate: [0],
-        count: [0],
-      }),
+      ]
     });
-    console.log(this.productForm);
     this.productForm.get('title').valueChanges.subscribe((value) => {});
   }
 
@@ -51,7 +45,7 @@ export class AddComponent implements OnInit {
       console.log('Invalid title value');
       return;
     }
-    this.productService.addProduct({...this.productForm.value});
+    this.productService.addProduct({...this.productForm.value}).subscribe((data) => console.log(data));
     this.productForm.reset();
   }
 }

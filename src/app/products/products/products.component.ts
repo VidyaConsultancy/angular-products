@@ -20,9 +20,13 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.fetchAll().subscribe((data) => {
+    const observable = this.productService.fetchAll();
+    observable.subscribe((data) => {
       this.products = data;
     });
+    // this.productService.fetchAll().subscribe((data) => {
+    //   this.products = data;
+    // });
   }
 
   getOps() {
@@ -34,7 +38,8 @@ export class ProductsComponent implements OnInit {
   }
 
   handleProductDelete(id: number) {
-    this.productService.removeProduct(id);
-    this.products = this.productService.getProducts();
+    this.productService.removeProduct(id).subscribe((data) => {
+      this.products = this.products.filter(product => product.id !== data.id);
+    });
   }
 }
