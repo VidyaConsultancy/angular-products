@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AppService } from './app.service';
@@ -13,7 +12,7 @@ export class AppComponent {
   selection = 'afadf';
   ob: Observable<number>;
 
-  constructor(private appService: AppService, private http: HttpClient) {
+  constructor(private appService: AppService) {
     const sum = this.appService.add(10, 20);
     const diff = this.appService.substract(10, 20);
     console.log(sum, diff, this.appService.operations);
@@ -36,8 +35,5 @@ export class AppComponent {
     this.ob.subscribe((value) => {
       console.log('s2 ', value);
     });
-    this.http.get('https://fakestoreapi.com/products').subscribe((response) => {
-      console.log(response)
-    })
   }
 }

@@ -20,7 +20,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.fetchAll().subscribe((data) => {
+      this.products = data;
+    });
   }
 
   getOps() {
