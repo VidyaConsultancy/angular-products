@@ -19,4 +19,8 @@ export class AppComponent {
   getOps() {
     console.log(this.appService.operations);
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }
