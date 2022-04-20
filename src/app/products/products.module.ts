@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ProductRoutingModule } from './product-routing.module';
+import { ProductRoutingModule } from './routes/product-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { AddComponent } from './add/add.component';

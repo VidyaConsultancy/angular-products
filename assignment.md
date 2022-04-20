@@ -231,3 +231,11 @@
     a. Add a method to add a post to liked list.
     b. Add a method to return the liked post list. (Ensure to return a copy of it not the reference)
 4. Create a new component LikedPosts. Render liked post list in this component. Use a button to fetch liked post list.
+
+### PART IV
+**Routing & Navigation**
+1. Setup routing in your project.
+2. Create following routes
+  a. `posts` => this will show the list of posts
+  b. `posts/liked` => this will show the list of liked posts
+  c. `posts/:id` => this will show the post detail
