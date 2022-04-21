@@ -1,8 +1,13 @@
-<menu type="toolbar" class="menubar container">
-  <li><a class="btn btn-primary" routerLink="/">Home</a></li>
-  <li><a class="btn btn-primary" routerLink="products">Products</a></li>
-  <li><a class="btn btn-primary" routerLink="cart">Cart</a></li>
-  <li><a class="btn btn-primary" routerLink="auth">Login/Signup</a></li>
-  <li><button class="btn btn-primary" (click)="logout()">Logout</button></li>
-</menu>
+<header class="main-header">
+  <div>
+    <a routerLink="/" class="logo">{{ title }}</a>
+  </div>
+  <menu type="toolbar" class="menubar container">
+    <li><a class="btn btn-primary" routerLink="/">Home</a></li>
+    <li><a class="btn btn-primary" routerLink="products">Products</a></li>
+    <li><a class="btn btn-primary" routerLink="cart">Cart</a></li>
+    <li><a class="btn btn-primary" routerLink="auth">Login/Signup</a></li>
+    <li><button class="btn btn-primary" (click)="logout()">Logout</button></li>
+  </menu>
+</header>
 <router-outlet></router-outlet>
