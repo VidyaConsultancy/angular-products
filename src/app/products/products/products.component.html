@@ -3,6 +3,9 @@
     <a class="btn btn-primary" routerLink="add">Add New</a>
   </div>
   <h2 class="title" [title]="'Products list'">Products</h2>
+  <div class="alert" [ngClass]="alert.type">
+    <p class="alert-message">{{ alert.message }}</p>
+  </div>
   <p *ngIf="products && products.length === 0; else lessProducts">No record found</p>
   <ng-template #lessProducts>
     <app-product

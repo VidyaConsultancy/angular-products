@@ -99,3 +99,25 @@ img {
     color: hsl(var(--clr-dark));
     user-select: none;
 }
+.alert {
+    position: fixed;
+    width: 60vw;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: hsla(var(--clr-light), 0.75);
+    color: hsl(var(--clr-dark));
+    z-index: 999;
+}
+.alert-message {
+    padding: 0.5em 1em;
+}
+.alert.alert-danger {
+    background-color: hsla(var(--clr-danger), 0.75);
+    color: hsl(var(--clr-light));
+}
+.alert.alert-success {
+    background-color: hsla(var(--clr-success), 0.75);
+    color: hsl(var(--clr-light));
+}

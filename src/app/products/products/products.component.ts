@@ -12,6 +12,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductsComponent implements OnInit {
   products: TProduct[];
+  alert: {type: string, message: string} = {type: 'alert-success', message: ''}
 
   constructor(private appService: AppService, private cartService: CartService, private productService: ProductService) {
     const sum = this.appService.add(10, 20);
@@ -22,7 +23,13 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     const observable = this.productService.fetchAll();
     observable.subscribe((data) => {
+      this.alert.type = 'alert-success';
+      this.alert.message = 'Product list fetched successfully';
       this.products = data;
+    }, (error) => {
+      this.alert.type = 'alert-danger';
+      this.alert.message = 'Error while fetching the products list. ' + error.message;
+      console.error('Error while fetching the products list', error);
     });
     // this.productService.fetchAll().subscribe((data) => {
     //   this.products = data;

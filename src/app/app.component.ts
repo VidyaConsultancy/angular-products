@@ -20,6 +20,7 @@ export class AppComponent {
       sub.next(10);
       sub.next(20);
       sub.next(30);
+      Promise.reject('Invalid use of observable');
       setTimeout(() => {
         sub.next(50);
       }, 1000);
@@ -27,7 +28,7 @@ export class AppComponent {
     });
     this.ob.subscribe((value) => {
       console.log('s1 ', value)
-    })
+    }, error => console.error('App', error))
   }
 
   logout() {
