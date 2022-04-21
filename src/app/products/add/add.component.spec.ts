@@ -114,9 +114,19 @@ describe('AddComponent', () => {
     component.productForm.controls.price.setValue(99.99);
     component.productForm.controls.description.setValue('A valid description');
     component.productForm.controls.category.setValue('electronics');
+    component.productForm.controls.image.setValue(
+      'https://unsplash.com/random'
+    );
 
     component.handleSubmit({ preventDefault: () => {} } as MouseEvent);
     expect(addProductSpy).toHaveBeenCalled();
     expect(addProductSpy).toHaveBeenCalledTimes(1);
+    expect(addProductSpy).toHaveBeenCalledWith({
+      title: 'A valid title',
+      price: 99.99,
+      description: 'A valid description',
+      category: 'electronics',
+      image: 'https://unsplash.com/random'
+    });
   });
 });

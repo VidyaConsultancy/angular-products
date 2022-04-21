@@ -12,3 +12,11 @@ export type TProduct = {
   image: string;
   rating: TProductRating;
 };
+
+export type TAddProduct = {
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+}

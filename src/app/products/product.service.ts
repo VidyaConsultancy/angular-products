@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { TProduct } from './types/product.type';
+import { TAddProduct, TProduct } from './types/product.type';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class ProductService {
     // return this.http.get<TProduct[]>(`${this.baseUrl}/products`)
   }
 
-  public addProduct(product: TProduct): Observable<TProduct> {
+  public addProduct(product: TAddProduct): Observable<TProduct> {
     return this.http.post<TProduct>(`${this.baseUrl}/products`, product);
   }
   
