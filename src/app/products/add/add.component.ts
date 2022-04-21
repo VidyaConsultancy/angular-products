@@ -29,15 +29,8 @@ export class AddComponent implements OnInit {
       image: [
         'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
         Validators.required,
-      ]
+      ],
     });
-    this.productForm.get('title').valueChanges.subscribe((value) => {});
-  }
-
-  generateARandomId(min: number = 1000, max: number = 9999) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   handleSubmit(event: MouseEvent) {
@@ -46,7 +39,11 @@ export class AddComponent implements OnInit {
       console.log('Invalid title value');
       return;
     }
-    this.productService.addProduct({...this.productForm.value}).subscribe((data) => console.log(data));
-    this.productForm.reset();
+    this.productService
+      .addProduct({ ...this.productForm.value })
+      .subscribe((data) => {
+        console.log(data);
+        this.productForm.reset();
+      });
   }
 }
