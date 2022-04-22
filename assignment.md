@@ -239,3 +239,18 @@
   a. `posts` => this will show the list of posts
   b. `posts/liked` => this will show the list of liked posts
   c. `posts/:id` => this will show the post detail
+
+### PART V
+### Hands on API integration
+- Use this http://fakeapi.jsonparseronline.com for fake apis.
+- Create posts service if you don't have it already.
+- Write one method eacy for below operations
+    - fetch all posts
+    - fetch post by id
+    - delete post by id
+    - create a post
+    - update a post
+
+### Hands on Unit testing
+- Start with initial unit test cases.
+- Write unit test cases for components and services in your app

@@ -36,13 +36,11 @@ export class AddComponent implements OnInit {
   handleSubmit(event: MouseEvent) {
     event.preventDefault();
     if (this.productForm.invalid) {
-      console.log('Invalid title value');
       return;
     }
     this.productService
       .addProduct({ ...this.productForm.value })
       .subscribe((data) => {
-        console.log(data);
         this.productForm.reset();
       });
   }

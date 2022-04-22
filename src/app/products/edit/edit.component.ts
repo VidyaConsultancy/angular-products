@@ -57,13 +57,11 @@ export class EditComponent implements OnInit {
   handleSubmit(event: MouseEvent) {
     event.preventDefault();
     if (this.productForm.invalid) {
-      console.log('Invalid title value');
       return;
     }
     this.productService
       .editProduct(this.productId, { ...this.productForm.value })
       .subscribe((data) => {
-        console.log(data);
         this.productForm.reset();
         this.router.navigateByUrl('/products');
       });

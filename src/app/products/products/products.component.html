@@ -6,7 +6,7 @@
   <div class="alert" [ngClass]="alert.type">
     <p class="alert-message">{{ alert.message }}</p>
   </div>
-  <p *ngIf="products && products.length === 0; else lessProducts">No record found</p>
+  <p *ngIf="(!products || (products && products.length === 0)); else lessProducts" id="no-records">No record found</p>
   <ng-template #lessProducts>
     <app-product
       *ngFor="let product of products; odd as isOdd; even as isEven"
