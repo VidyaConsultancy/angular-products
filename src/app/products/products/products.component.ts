@@ -33,7 +33,6 @@ export class ProductsComponent implements OnInit {
         this.alert.type = 'alert-danger';
         this.alert.message =
           'Error while fetching the products list. ' + error.message;
-        console.error('Error while fetching the products list', error);
       }
     );
     // this.productService.fetchAll().subscribe((data) => {

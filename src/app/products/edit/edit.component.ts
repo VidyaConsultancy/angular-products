@@ -28,18 +28,22 @@ export class EditComponent implements OnInit {
       this.productService
         .getProductDetailById(+this.productId)
         .subscribe((data) => {
+          this.productForm.controls['id'].patchValue(data.id);
           this.productForm.controls['title'].patchValue(data.title);
           this.productForm.controls['price'].patchValue(data.price);
           this.productForm.controls['description'].patchValue(data.description);
           this.productForm.controls['category'].patchValue(data.category);
           this.productForm.controls['image'].patchValue(data.image);
+          this.productForm.get('rating').get('rate').patchValue(data.rating.rate);
+          this.productForm.get('rating').get('count').patchValue(data.rating.count);
         });
     });
   }
 
   createProductForm() {
     this.productForm = this.fb.group({
-      title: ['Title', Validators.required],
+      id: ['', Validators.required],
+      title: ['', Validators.required],
       price: [
         null,
         [Validators.required, Validators.min(10), Validators.max(999)],
@@ -50,6 +54,10 @@ export class EditComponent implements OnInit {
         'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
         Validators.required,
       ],
+      rating: this.fb.group({
+        count: 0,
+        rate: 0,
+      })
     });
     this.productForm.get('title').valueChanges.subscribe((value) => {});
   }
